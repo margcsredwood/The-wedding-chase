@@ -1,0 +1,286 @@
+/* ======================================================
+   THE WEDDING CHASE - VERSION 2 STYLES
+   ====================================================== */
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #ffeaf2;
+  color: #3d2931;
+  text-align: center;
+}
+
+header { padding: 12px 10px 8px; }
+header h1 { margin: 0; font-size: clamp(25px, 5vw, 43px); }
+header p { margin: 5px 0; font-size: clamp(13px, 2vw, 17px); }
+
+main { width: min(1050px, 96vw); margin: auto; }
+
+.game {
+  position: relative;
+  width: 100%;
+  height: min(60vh, 540px);
+  min-height: 350px;
+  overflow: hidden;
+  border: 5px solid white;
+  border-radius: 22px;
+  background: #9bdfff;
+  box-shadow: 0 10px 30px rgba(75, 40, 55, .2);
+  user-select: none;
+}
+
+/* ---------- Sky ---------- */
+.sky {
+  position: absolute;
+  inset: 0 0 42% 0;
+  background: linear-gradient(#86d5fa, #e3f8ff);
+}
+.sun { position: absolute; right: 7%; top: 12px; font-size: 48px; }
+.cloud { position: absolute; font-size: 43px; opacity: .8; animation: cloudMove 18s linear infinite; }
+.cloud1 { top: 20px; left: 10%; }
+.cloud2 { top: 75px; left: 60%; animation-delay: -8s; }
+@keyframes cloudMove { from { transform: translateX(0); } to { transform: translateX(130px); } }
+
+/* ---------- City ---------- */
+.city {
+  position: absolute;
+  bottom: 42%;
+  left: 0;
+  right: 0;
+  height: 42%;
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  padding: 0 14px;
+}
+.building {
+  position: relative;
+  flex: 1;
+  min-width: 45px;
+  border: 2px solid rgba(55,40,50,.15);
+  padding: 9px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 7px;
+}
+.building1 { height: 64%; background: #d6b4c4; }
+.building2 { height: 94%; background: #c1c9de; }
+.building3 { height: 74%; background: #e3c49f; }
+.building4 { height: 56%; background: #b9d5c5; }
+.building i { display: block; height: 17px; background: #fff3a5; border: 1px solid rgba(0,0,0,.1); }
+.tree { font-size: 44px; padding-bottom: 2px; }
+
+/* ---------- Road ---------- */
+.road {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 42%;
+  background: #555b61;
+  border-top: 7px solid #737a80;
+}
+.road::before, .road::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  height: 4px;
+  background: #e9e9e9;
+}
+.road::before { top: 12px; }
+.road::after { bottom: 12px; }
+.lane-mark {
+  position: absolute;
+  top: 50%;
+  width: 95px;
+  height: 7px;
+  border-radius: 8px;
+  background: #f8dc6d;
+  animation: roadMove .9s linear infinite;
+}
+.mark1 { left: -20px; }
+.mark2 { left: 22%; animation-delay: -.18s; }
+.mark3 { left: 48%; animation-delay: -.36s; }
+.mark4 { left: 74%; animation-delay: -.54s; }
+.mark5 { left: 100%; animation-delay: -.72s; }
+@keyframes roadMove { from { transform: translateX(0); } to { transform: translateX(-145px); } }
+
+/* ---------- Destination ---------- */
+.wedding-house {
+  position: absolute;
+  z-index: 3;
+  right: 18px;
+  bottom: 43%;
+  background: white;
+  border: 3px solid #c887a0;
+  border-radius: 12px;
+  padding: 5px 9px;
+  font-size: 27px;
+  box-shadow: 0 3px 9px rgba(0,0,0,.15);
+}
+.wedding-house span { display: block; font-size: 8px; font-weight: bold; }
+
+/* ---------- Score ---------- */
+.score {
+  position: absolute;
+  z-index: 20;
+  top: 12px; left: 12px;
+  background: rgba(255,255,255,.9);
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-size: 15px;
+}
+
+/* ---------- Bride ---------- */
+.bride {
+  position: absolute;
+  z-index: 10;
+  left: 13%;
+  bottom: 15%;
+  width: 175px;
+  height: 300px;
+}
+
+/* Bride picture */
+.bride img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+.bride-head { position: absolute; z-index: 4; left: 16px; top: 0; font-size: 44px; }
+.veil {
+  position: absolute;
+  z-index: 3;
+  left: 5px; top: 3px;
+  width: 66px; height: 67px;
+  border: 2px solid white;
+  border-radius: 50%;
+  background: rgba(255,255,255,.68);
+}
+.dress {
+  position: absolute;
+  left: 5px; bottom: 0;
+  width: 68px; height: 90px;
+  background: white;
+  border: 3px solid #ddd4db;
+  clip-path: polygon(35% 0, 65% 0, 100% 100%, 0 100%);
+}
+.dress::after { content: "♡"; position: absolute; left: 25px; top: 25px; font-size: 19px; color: #d9688e; }
+.bouquet { position: absolute; z-index: 5; right: -8px; bottom: 31px; font-size: 25px; }
+.bride.jumping { animation: jump .64s ease-out; }
+@keyframes jump {
+  0% { transform: translateY(0); }
+  45% { transform: translateY(-130px); }
+  100% { transform: translateY(0); }
+}
+
+/* ---------- Obstacles ---------- */
+.obstacle { position: absolute; z-index: 9; }
+.car {
+  width: 84px; height: 43px;
+  bottom: 25%;
+  background: #e35f76;
+  border: 3px solid #a83e51;
+  border-radius: 13px 18px 7px 7px;
+}
+.car::before {
+  content: "";
+  position: absolute;
+  width: 37px; height: 20px;
+  top: -16px; left: 20px;
+  background: #a9e0f2;
+  border: 3px solid #a83e51;
+  border-bottom: 0;
+  border-radius: 10px 10px 0 0;
+}
+.car::after { content: "●   ●"; position: absolute; left: 10px; bottom: -20px; color: #222; font-size: 22px; letter-spacing: 12px; }
+.pothole {
+  width: 72px; height: 27px;
+  bottom: 25%;
+  background: #252729;
+  border: 5px solid #414448;
+  border-radius: 50%;
+}
+.stump {
+  width: 46px; height: 56px;
+  bottom: 25%;
+  background: #99613c;
+  border: 4px solid #6e4229;
+  border-radius: 8px 8px 5px 5px;
+}
+.stump::before { content: "🌿"; position: absolute; left: -2px; top: -29px; font-size: 27px; }
+
+/* ---------- Screens ---------- */
+.screen {
+  position: absolute;
+  z-index: 100;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  background: rgba(43, 23, 32, .43);
+}
+.hidden { display: none; }
+.card {
+  width: min(450px, 94%);
+  padding: 25px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+.card h2 { margin: 0 0 10px; font-size: 30px; }
+.card p { line-height: 1.45; }
+.card button {
+  border: 0;
+  border-radius: 13px;
+  padding: 12px 18px;
+  margin: 5px;
+  background: #df648a;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.card button:hover, #jumpBtn:hover { transform: scale(1.04); }
+.card .secondary { background: #777; }
+.hint, .small { font-size: 12px; color: #777; }
+
+/* ---------- Jump button ---------- */
+.controls { padding: 10px 0 4px; }
+#jumpBtn {
+  width: min(330px, 90vw);
+  border: 0;
+  border-radius: 14px;
+  padding: 15px;
+  background: #ed7098;
+  color: white;
+  font-size: 21px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 5px 0 #b64f70;
+  touch-action: manipulation;
+}
+#jumpBtn:active { transform: translateY(4px); box-shadow: 0 1px 0 #b64f70; }
+.controls p { margin: 8px; font-size: 14px; }
+footer { padding: 4px 10px 14px; color: #777; font-size: 12px; }
+
+@media (max-width: 600px) {
+  .game { min-height: 330px; height: 54vh; border-width: 3px; }
+  .city { gap: 4px; padding: 0 5px; }
+  .tree { font-size: 32px; }
+  .building i { height: 13px; }
+  .sun { font-size: 37px; }
+  .cloud { font-size: 30px; }
+  .bride { transform: scale(.82); transform-origin: bottom left; left: 10%; }
+  .bride.jumping { animation-name: jumpSmall; }
+  @keyframes jumpSmall {
+    0% { transform: scale(.82) translateY(0); }
+    45% { transform: scale(.82) translateY(-108px); }
+    100% { transform: scale(.82) translateY(0); }
+  }
+  .wedding-house { font-size: 20px; right: 7px; }
+  .score { font-size: 12px; }
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Wedding Chase</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Game title and instructions -->
+  <header>
+    <h1>💍 THE WEDDING CHASE</h1>
+    <p>Help the bride get to her wedding without hitting anything!</p>
+  </header>
+
+  <!-- Main game -->
+  <main>
+    <div id="game" class="game">
+      <!-- Sky and city background -->
+      <div class="sky">
+        <div class="sun">☀️</div>
+        <div class="cloud cloud1">☁️</div>
+        <div class="cloud cloud2">☁️</div>
+      </div>
+
+      <div class="city">
+        <div class="building building1"><i></i><i></i><i></i><i></i></div>
+        <div class="building building2"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="building building3"><i></i><i></i><i></i></div>
+        <div class="building building4"><i></i><i></i><i></i><i></i></div>
+        <div class="tree">🌳</div>
+      </div>
+
+      <!-- Road -->
+      <div class="road">
+        <div class="lane-mark mark1"></div>
+        <div class="lane-mark mark2"></div>
+        <div class="lane-mark mark3"></div>
+        <div class="lane-mark mark4"></div>
+        <div class="lane-mark mark5"></div>
+      </div>
+
+      <!-- Wedding destination -->
+      <div class="wedding-house">💒<span>WEDDING</span></div>
+
+      <!-- Distance counter -->
+      <div class="score">Distance: <strong id="score">0</strong> m</div>
+
+      <!-- Bride character -->
+      <div id="bride" class="bride" aria-label="Bride">
+         <img src="bride.png" alt=""bride">
+      </div>
+
+      <!-- Obstacles are inserted here by JavaScript -->
+      <div id="obstacles"></div>
+
+      <!-- Start screen -->
+      <div id="startScreen" class="screen">
+        <div class="card">
+          <h2>👰 Ready to Run?</h2>
+          <p>The bride is late! Jump over cars, potholes and tree stumps.</p>
+          <button id="startBtn">START CHASE</button>
+          <p class="hint">Press SPACE or use the JUMP button.</p>
+        </div>
+      </div>
+
+      <!-- Crash screen -->
+      <div id="crashScreen" class="screen hidden">
+        <div class="card">
+          <h2>💥 CRASH!</h2>
+          <p id="crashText">The bride hit an obstacle.</p>
+          <p id="autoText" class="small"></p>
+          <button id="adBtn">▶ Watch Ad & Continue</button>
+          <button id="restartBtn" class="secondary">↻ Restart Now</button>
+        </div>
+      </div>
+
+      <!-- Win screen -->
+      <div id="winScreen" class="screen hidden">
+        <div class="card">
+          <h2>🎉 SHE MADE IT!</h2>
+          <p>The bride reached the wedding!</p>
+          <button id="againBtn">PLAY AGAIN</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Jump control below the road -->
+    <section class="controls">
+      <button id="jumpBtn">⬆ JUMP</button>
+      <p>Keyboard: <strong>SPACE</strong> &nbsp;•&nbsp; Mobile: tap <strong>JUMP</strong></p>
+    </section>
+  </main>
+
+  <footer>No progress is saved when you leave or refresh the game.</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
